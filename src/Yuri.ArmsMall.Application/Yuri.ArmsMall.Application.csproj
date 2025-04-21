@@ -1,0 +1,15 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net9.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <RootNamespace>Yuri.ArmsMall</RootNamespace>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Yuri.ArmsMall.Application.Contracts\Yuri.ArmsMall.Application.Contracts.csproj" />
+    <ProjectReference Include="..\Yuri.ArmsMall.Domain\Yuri.ArmsMall.Domain.csproj" />
+  </ItemGroup>
+
+</Project>
