@@ -9,5 +9,11 @@ public interface IOrderRepository
     /// 
     /// </summary>
     /// <returns></returns>
+    Task<List<Order>> GetListAsync();
+
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <returns></returns>
     Task<(int, List<Order>)> GetPageListAsync();
 }

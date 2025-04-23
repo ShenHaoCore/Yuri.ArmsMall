@@ -16,6 +16,16 @@ public class OrderRepository : IOrderRepository
     /// 
     /// </summary>
     /// <returns></returns>
+    public async Task<List<Order>> GetListAsync()
+    {
+        await Task.CompletedTask;
+        return [];
+    }
+
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <returns></returns>
     public async Task<(int, List<Order>)> GetPageListAsync()
     {
         await Task.CompletedTask;
