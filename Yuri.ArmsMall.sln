@@ -17,18 +17,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Yuri.ArmsMall.Application",
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Yuri.ArmsMall.EntityFrameworkCore", "src\Yuri.ArmsMall.EntityFrameworkCore\Yuri.ArmsMall.EntityFrameworkCore.csproj", "{A6F3F6E9-3C38-4257-B4A9-18230C702739}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "framework", "framework", "{F15B2720-7C39-4D27-9B84-9FB8CF087163}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Shen.Hao.Core", "framework\Shen.Hao.Core\Shen.Hao.Core.csproj", "{6CFE2CE3-6F6B-47AB-85D1-7640F604CB20}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Shen.Hao.Ddd.Domain", "framework\Shen.Hao.Ddd.Domain\Shen.Hao.Ddd.Domain.csproj", "{AAA042AE-6658-4B10-9EF2-32EFD0BD30AB}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Shen.Hao.MultiTenancy.Abstractions", "framework\Shen.Hao.MultiTenancy.Abstractions\Shen.Hao.MultiTenancy.Abstractions.csproj", "{AC4E7EF0-25A1-4A3F-A8CD-82A1595B9227}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Shen.Hao.Auditing", "framework\Shen.Hao.Auditing\Shen.Hao.Auditing.csproj", "{33945B1F-9C15-4341-A7BB-F3E22364EB3F}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Shen.Hao.Auditing.Contracts", "framework\Shen.Hao.Auditing.Contracts\Shen.Hao.Auditing.Contracts.csproj", "{11929876-1AFA-45D7-A27F-B31C171C091D}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -55,26 +43,6 @@ Global
 		{A6F3F6E9-3C38-4257-B4A9-18230C702739}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A6F3F6E9-3C38-4257-B4A9-18230C702739}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A6F3F6E9-3C38-4257-B4A9-18230C702739}.Release|Any CPU.Build.0 = Release|Any CPU
-		{6CFE2CE3-6F6B-47AB-85D1-7640F604CB20}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{6CFE2CE3-6F6B-47AB-85D1-7640F604CB20}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{6CFE2CE3-6F6B-47AB-85D1-7640F604CB20}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{6CFE2CE3-6F6B-47AB-85D1-7640F604CB20}.Release|Any CPU.Build.0 = Release|Any CPU
-		{AAA042AE-6658-4B10-9EF2-32EFD0BD30AB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{AAA042AE-6658-4B10-9EF2-32EFD0BD30AB}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{AAA042AE-6658-4B10-9EF2-32EFD0BD30AB}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{AAA042AE-6658-4B10-9EF2-32EFD0BD30AB}.Release|Any CPU.Build.0 = Release|Any CPU
-		{AC4E7EF0-25A1-4A3F-A8CD-82A1595B9227}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{AC4E7EF0-25A1-4A3F-A8CD-82A1595B9227}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{AC4E7EF0-25A1-4A3F-A8CD-82A1595B9227}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{AC4E7EF0-25A1-4A3F-A8CD-82A1595B9227}.Release|Any CPU.Build.0 = Release|Any CPU
-		{33945B1F-9C15-4341-A7BB-F3E22364EB3F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{33945B1F-9C15-4341-A7BB-F3E22364EB3F}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{33945B1F-9C15-4341-A7BB-F3E22364EB3F}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{33945B1F-9C15-4341-A7BB-F3E22364EB3F}.Release|Any CPU.Build.0 = Release|Any CPU
-		{11929876-1AFA-45D7-A27F-B31C171C091D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{11929876-1AFA-45D7-A27F-B31C171C091D}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{11929876-1AFA-45D7-A27F-B31C171C091D}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{11929876-1AFA-45D7-A27F-B31C171C091D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -85,11 +53,6 @@ Global
 		{DEF7C606-DBB5-4F86-A89C-31BC00B71FE2} = {02EA681E-C7D8-13C7-8484-4AC65E1B71E8}
 		{06A4ABF4-68C3-4F97-9D78-B76F527C7F46} = {02EA681E-C7D8-13C7-8484-4AC65E1B71E8}
 		{A6F3F6E9-3C38-4257-B4A9-18230C702739} = {02EA681E-C7D8-13C7-8484-4AC65E1B71E8}
-		{6CFE2CE3-6F6B-47AB-85D1-7640F604CB20} = {F15B2720-7C39-4D27-9B84-9FB8CF087163}
-		{AAA042AE-6658-4B10-9EF2-32EFD0BD30AB} = {F15B2720-7C39-4D27-9B84-9FB8CF087163}
-		{AC4E7EF0-25A1-4A3F-A8CD-82A1595B9227} = {F15B2720-7C39-4D27-9B84-9FB8CF087163}
-		{33945B1F-9C15-4341-A7BB-F3E22364EB3F} = {F15B2720-7C39-4D27-9B84-9FB8CF087163}
-		{11929876-1AFA-45D7-A27F-B31C171C091D} = {F15B2720-7C39-4D27-9B84-9FB8CF087163}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {2AEF2383-25DA-44BC-8C51-EE25AAAAB24E}
