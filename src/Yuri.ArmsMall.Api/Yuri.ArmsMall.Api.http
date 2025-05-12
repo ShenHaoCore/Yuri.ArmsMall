@@ -1,0 +1,6 @@
+@Yuri.ArmsMall.Api_HostAddress = http://localhost:5200
+
+GET {{Yuri.ArmsMall.Api_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

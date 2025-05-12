@@ -1,24 +1,27 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using Yuri.ArmsMall.Orders;
 
 namespace Yuri.ArmsMall.EntityFrameworkCore;
 
 /// <summary>
 /// 
 /// </summary>
-public class ArmsMallDbContext
+public class ArmsMallDbContext : DbContext
 {
     /// <summary>
     /// 
     /// </summary>
-    public DbSet<Order> Orders { get; set; }
+    /// <param name="options"></param>
+    public ArmsMallDbContext(DbContextOptions<ArmsMallDbContext> options) : base(options)
+    {
+        
+    }
 
     /// <summary>
     /// 
     /// </summary>
-    /// <param name="options"></param>
-    public ArmsMallDbContext()
+    /// <param name="builder"></param>
+    protected override void OnModelCreating(ModelBuilder builder)
     {
-
+        base.OnModelCreating(builder);
     }
 }

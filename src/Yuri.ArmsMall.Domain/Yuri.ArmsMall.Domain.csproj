@@ -8,6 +8,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\Yuri.ArmsMall.Common\Yuri.ArmsMall.Common.csproj" />
     <ProjectReference Include="..\Yuri.ArmsMall.Domain.Shared\Yuri.ArmsMall.Domain.Shared.csproj" />
   </ItemGroup>
 
