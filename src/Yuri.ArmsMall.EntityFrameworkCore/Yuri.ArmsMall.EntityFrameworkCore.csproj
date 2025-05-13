@@ -19,8 +19,4 @@
     <ProjectReference Include="..\Yuri.ArmsMall.Domain\Yuri.ArmsMall.Domain.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Common\" />
-  </ItemGroup>
-
 </Project>
