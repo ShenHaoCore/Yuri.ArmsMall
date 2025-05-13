@@ -1,7 +1,7 @@
 ﻿using System.Diagnostics.CodeAnalysis;
-using Yuri.ArmsMall.Common.Entities;
+using Yuri.ArmsMall.Domain.Entities;
 
-namespace Yuri.ArmsMall.Common.Repositories;
+namespace Yuri.ArmsMall.Domain.Repositories;
 
 /// <summary>
 /// 仓储接口

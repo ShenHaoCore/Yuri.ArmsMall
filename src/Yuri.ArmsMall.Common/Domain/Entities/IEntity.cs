@@ -1,4 +1,4 @@
-﻿namespace Yuri.ArmsMall.Common.Entities;
+﻿namespace Yuri.ArmsMall.Domain.Entities;
 
 /// <summary>
 /// 定义实体（多主键或单主键）
