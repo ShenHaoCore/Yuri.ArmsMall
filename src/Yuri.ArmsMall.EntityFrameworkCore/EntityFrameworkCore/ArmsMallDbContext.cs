@@ -1,10 +1,12 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using Volo.Abp.Data;
 
 namespace Yuri.ArmsMall.EntityFrameworkCore;
 
 /// <summary>
 /// 
 /// </summary>
+[ConnectionStringName("Default")]
 public class ArmsMallDbContext : DbContext
 {
     /// <summary>

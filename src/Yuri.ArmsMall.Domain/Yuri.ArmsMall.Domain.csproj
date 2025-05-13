@@ -8,7 +8,10 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Yuri.ArmsMall.Common\Yuri.ArmsMall.Common.csproj" />
+    <PackageReference Include="Volo.Abp.Ddd.Domain" Version="9.1.3" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\Yuri.ArmsMall.Domain.Shared\Yuri.ArmsMall.Domain.Shared.csproj" />
   </ItemGroup>
 

@@ -1,8 +1,10 @@
-﻿namespace Yuri.ArmsMall.Countries;
+﻿using Volo.Abp.Domain.Entities.Auditing;
+
+namespace Yuri.ArmsMall.Countries;
 
 /// <summary>
 /// 
 /// </summary>
-public class Country
+public class Country : FullAuditedAggregateRoot<Guid>
 {
 }
