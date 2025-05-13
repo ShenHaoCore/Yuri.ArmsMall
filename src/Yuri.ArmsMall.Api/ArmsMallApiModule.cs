@@ -1,4 +1,6 @@
-﻿using Volo.Abp.Autofac;
+﻿using Volo.Abp;
+using Volo.Abp.AspNetCore.Mvc;
+using Volo.Abp.Autofac;
 using Volo.Abp.Modularity;
 
 namespace Yuri.ArmsMall;
@@ -7,6 +9,7 @@ namespace Yuri.ArmsMall;
 /// 
 /// </summary>
 [DependsOn(typeof(AbpAutofacModule))]
+[DependsOn(typeof(AbpAspNetCoreMvcModule))]
 [DependsOn(typeof(ArmsMallApplicationModule))]
 [DependsOn(typeof(ArmsMallEntityFrameworkCoreModule))]
 public class ArmsMallApiModule : AbpModule
@@ -26,6 +29,19 @@ public class ArmsMallApiModule : AbpModule
     /// <param name="context"></param>
     public override void ConfigureServices(ServiceConfigurationContext context)
     {
+        Configure<AbpAspNetCoreMvcOptions>(options => { options.ConventionalControllers.Create(typeof(ArmsMallApplicationModule).Assembly); });
+        context.Services.AddOpenApi();
+    }
 
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <param name="context"></param>
+    public override void OnApplicationInitialization(ApplicationInitializationContext context)
+    {
+        var env = context.GetEnvironment();
+        var app = context.GetApplicationBuilder();
+        app.UseHttpsRedirection();
+        app.UseAuthorization();
     }
 }

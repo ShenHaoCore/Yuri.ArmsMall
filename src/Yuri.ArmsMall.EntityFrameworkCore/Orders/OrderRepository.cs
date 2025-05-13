@@ -1,14 +1,19 @@
-﻿namespace Yuri.ArmsMall.Orders;
+﻿using Volo.Abp.Domain.Repositories.EntityFrameworkCore;
+using Volo.Abp.EntityFrameworkCore;
+using Yuri.ArmsMall.EntityFrameworkCore;
+
+namespace Yuri.ArmsMall.Orders;
 
 /// <summary>
 /// 
 /// </summary>
-public class OrderRepository : IOrderRepository
+public class OrderRepository : EfCoreRepository<ArmsMallDbContext, Order, Guid>, IOrderRepository
 {
     /// <summary>
     /// 
     /// </summary>
-    public OrderRepository()
+    /// <param name="dbContextProvider"></param>
+    public OrderRepository(IDbContextProvider<ArmsMallDbContext> dbContextProvider) : base(dbContextProvider)
     {
     }
 

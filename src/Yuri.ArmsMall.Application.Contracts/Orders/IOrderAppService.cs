@@ -1,9 +1,11 @@
-﻿namespace Yuri.ArmsMall.Orders;
+﻿using Volo.Abp.Application.Services;
+
+namespace Yuri.ArmsMall.Orders;
 
 /// <summary>
 /// 
 /// </summary>
-public interface IOrderAppService
+public interface IOrderAppService : IApplicationService
 {
     /// <summary>
     /// 

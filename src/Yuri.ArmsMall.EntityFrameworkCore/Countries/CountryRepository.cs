@@ -1,14 +1,20 @@
-﻿namespace Yuri.ArmsMall.Countries;
+﻿using static System.Runtime.InteropServices.JavaScript.JSType;
+using Volo.Abp.Domain.Repositories.EntityFrameworkCore;
+using Yuri.ArmsMall.EntityFrameworkCore;
+using Volo.Abp.EntityFrameworkCore;
+
+namespace Yuri.ArmsMall.Countries;
 
 /// <summary>
 /// 
 /// </summary>
-public class CountryRepository : ICountryRepository
+public class CountryRepository : EfCoreRepository<ArmsMallDbContext, Country, Guid>, ICountryRepository
 {
     /// <summary>
     /// 
     /// </summary>
-    public CountryRepository()
+    /// <param name="dbContextProvider"></param>
+    public CountryRepository(IDbContextProvider<ArmsMallDbContext> dbContextProvider) : base(dbContextProvider)
     {
     }
 

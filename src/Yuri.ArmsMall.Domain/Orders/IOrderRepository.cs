@@ -1,9 +1,11 @@
-﻿namespace Yuri.ArmsMall.Orders;
+﻿using Volo.Abp.Domain.Repositories;
+
+namespace Yuri.ArmsMall.Orders;
 
 /// <summary>
 /// 
 /// </summary>
-public interface IOrderRepository
+public interface IOrderRepository : IRepository<Order, Guid>
 {
     /// <summary>
     /// 

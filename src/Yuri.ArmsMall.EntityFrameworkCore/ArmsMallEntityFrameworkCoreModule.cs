@@ -1,4 +1,7 @@
-﻿using Volo.Abp.Modularity;
+﻿using Microsoft.Extensions.DependencyInjection;
+using Volo.Abp.EntityFrameworkCore;
+using Volo.Abp.Modularity;
+using Yuri.ArmsMall.EntityFrameworkCore;
 
 namespace Yuri.ArmsMall;
 
@@ -23,6 +26,7 @@ public class ArmsMallEntityFrameworkCoreModule : AbpModule
     /// <param name="context"></param>
     public override void ConfigureServices(ServiceConfigurationContext context)
     {
-
+        context.Services.AddAbpDbContext<ArmsMallDbContext>(options => { options.AddDefaultRepositories(includeAllEntities: true); });
+        Configure<AbpDbContextOptions>(options => { options.UseSqlServer(); });
     }
 }

@@ -1,10 +1,19 @@
-﻿namespace Yuri.ArmsMall.Countries;
+﻿using Volo.Abp.Application.Services;
+
+namespace Yuri.ArmsMall.Countries;
 
 /// <summary>
 /// 
 /// </summary>
-public interface ICountryAppService
+public interface ICountryAppService : IApplicationService
 {
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <param name="id"></param>
+    /// <returns></returns>
+    Task<CountryDto> GetAsync(Guid id);
+
     /// <summary>
     /// 
     /// </summary>

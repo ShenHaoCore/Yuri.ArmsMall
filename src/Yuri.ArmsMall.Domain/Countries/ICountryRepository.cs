@@ -1,9 +1,11 @@
-﻿namespace Yuri.ArmsMall.Countries;
+﻿using Volo.Abp.Domain.Repositories;
+
+namespace Yuri.ArmsMall.Countries;
 
 /// <summary>
 /// 
 /// </summary>
-public interface ICountryRepository
+public interface ICountryRepository : IRepository<Country, Guid>
 {
     /// <summary>
     /// 
