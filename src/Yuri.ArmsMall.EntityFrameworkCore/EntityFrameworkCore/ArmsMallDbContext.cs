@@ -8,7 +8,7 @@ namespace Yuri.ArmsMall.EntityFrameworkCore;
 /// <summary>
 /// 
 /// </summary>
-[ConnectionStringName("Default")]
+[ConnectionStringName("ArmsMall")]
 public class ArmsMallDbContext : AbpDbContext<ArmsMallDbContext>
 {
     #region 实体
