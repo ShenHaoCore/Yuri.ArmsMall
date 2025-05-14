@@ -40,6 +40,7 @@ public class ArmsMallApiModule : AbpModule
     {
         var env = context.GetEnvironment();
         var app = context.GetApplicationBuilder();
+        if (env.IsDevelopment()) { app.UseDeveloperExceptionPage(); }
         app.UseHttpsRedirection();
         app.UseAuthorization();
     }

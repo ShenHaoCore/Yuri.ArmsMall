@@ -27,12 +27,7 @@ public class Country : FullAuditedAggregateRoot<Guid>
     /// <summary>
     /// 
     /// </summary>
-    public string NameCn { get; set; } = string.Empty;
-
-    /// <summary>
-    /// 
-    /// </summary>
-    public string FullNameCn { get; set; } = string.Empty;
+    public string Name { get; set; } = string.Empty;
 
     /// <summary>
     /// 国家

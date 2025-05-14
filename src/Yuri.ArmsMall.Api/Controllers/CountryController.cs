@@ -1,10 +1,13 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Yuri.ArmsMall.Countries;
 
-namespace Yuri.ArmsMall.Controllers.V1;
+namespace Yuri.ArmsMall.Controllers;
 
-[Route("api/[controller]")]
+/// <summary>
+/// 
+/// </summary>
 [ApiController]
+[Route("api/[controller]/[action]")]
 public class CountryController : ControllerBase
 {
     private readonly ICountryAppService _countryAppService;
@@ -36,7 +39,7 @@ public class CountryController : ControllerBase
     /// <returns></returns>
     [HttpPost]
     [EndpointSummary("国家API")]
-    [EndpointDescription("获取国家分页")]
+    [EndpointDescription("获取国家分页列表")]
     public async Task<IActionResult> GetPage()
     {
         (int count, List<CountryDto> list) = await _countryAppService.GetPageListAsync();

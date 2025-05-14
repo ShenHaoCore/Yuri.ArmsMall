@@ -1,10 +1,13 @@
 using Scalar.AspNetCore;
 using Yuri.ArmsMall;
+using Yuri.ArmsMall.Scalars;
 
 var builder = WebApplication.CreateBuilder(args);
 builder.Host.UseAutofac();
 await builder.AddApplicationAsync<ArmsMallApiModule>();
-builder.Services.AddOpenApi();
+builder.Services.AddOpenApi(options => {
+    options.AddDocumentTransformer<AuthenApiDocumentTransformer>();
+});
 
 var app = builder.Build();
 if (app.Environment.IsDevelopment())
