@@ -1,35 +1,31 @@
 ﻿namespace Yuri.ArmsMall.Countries;
 
-/// <summary>
-/// 
-/// </summary>
+/// <inheritdoc cref="ICountryAppService"/>
 public class CountryAppService : ArmsMallAppService, ICountryAppService
 {
-    /// <summary>
-    /// 
-    /// </summary>
-    public CountryAppService()
+    private readonly ICountryRepository _countryRepository;
+    private readonly CountryManager _countryManager;
+
+    /// <inheritdoc cref="ICountryAppService"/>
+    /// <param name="countryRepository"></param>
+    /// <param name="countryManager"></param>
+    public CountryAppService(ICountryRepository countryRepository, CountryManager countryManager)
     {
+        _countryRepository = countryRepository;
+        _countryManager = countryManager;
     }
 
-    /// <summary>
-    /// 
-    /// </summary>
-    /// <param name="id"></param>
-    /// <returns></returns>
+    /// <inheritdoc/>
     public async Task<CountryDto> GetAsync(Guid id)
     {
         await Task.CompletedTask;
         return new CountryDto();
     }
 
-    /// <summary>
-    /// 
-    /// </summary>
-    /// <returns></returns>
+    /// <inheritdoc/>
     public async Task<(int, List<CountryDto>)> GetPageListAsync()
     {
-        await Task.CompletedTask;
-        return (0, []);
+        (int count, List<Country> list) = await _countryRepository.GetPageListAsync();
+        return (count, ObjectMapper.Map<List<Country>, List<CountryDto>>(list));
     }
 }

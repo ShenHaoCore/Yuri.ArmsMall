@@ -26,4 +26,9 @@ public class CountryDto : EntityDto<Guid>
     /// 
     /// </summary>
     public string Name { get; set; } = string.Empty;
+
+    /// <summary>
+    /// 
+    /// </summary>
+    public string FullName { get; set; } = string.Empty;
 }

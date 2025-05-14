@@ -1,10 +1,12 @@
-﻿using Volo.Abp.Modularity;
+﻿using Volo.Abp.AutoMapper;
+using Volo.Abp.Modularity;
 
 namespace Yuri.ArmsMall;
 
 /// <summary>
 /// 
 /// </summary>
+[DependsOn(typeof(AbpAutoMapperModule))]
 [DependsOn(typeof(ArmsMallApplicationContractsModule))]
 [DependsOn(typeof(ArmsMallDomainModule))]
 public class ArmsMallApplicationModule : AbpModule
@@ -24,6 +26,6 @@ public class ArmsMallApplicationModule : AbpModule
     /// <param name="context"></param>
     public override void ConfigureServices(ServiceConfigurationContext context)
     {
-
+        Configure<AbpAutoMapperOptions>(options => { options.AddMaps<ArmsMallApplicationModule>(); });
     }
 }

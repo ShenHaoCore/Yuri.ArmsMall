@@ -1,5 +1,6 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 using Volo.Abp.EntityFrameworkCore;
+using Volo.Abp.EntityFrameworkCore.SqlServer;
 using Volo.Abp.Modularity;
 using Yuri.ArmsMall.EntityFrameworkCore;
 
@@ -8,6 +9,7 @@ namespace Yuri.ArmsMall;
 /// <summary>
 /// 
 /// </summary>
+[DependsOn(typeof(AbpEntityFrameworkCoreSqlServerModule))]
 [DependsOn(typeof(ArmsMallDomainModule))]
 public class ArmsMallEntityFrameworkCoreModule : AbpModule
 {
