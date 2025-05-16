@@ -23,6 +23,13 @@ public class CountryAppService : ArmsMallAppService, ICountryAppService
     }
 
     /// <inheritdoc/>
+    public async Task<List<CountryDto>> GetListAsync()
+    {
+        List<Country> list = await _countryRepository.GetListAsync();
+        return ObjectMapper.Map<List<Country>, List<CountryDto>>(list);
+    }
+
+    /// <inheritdoc/>
     public async Task<(int, List<CountryDto>)> GetPageListAsync()
     {
         (int count, List<Country> list) = await _countryRepository.GetPageListAsync();

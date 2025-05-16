@@ -1,7 +1,7 @@
-﻿using Volo.Abp.Domain.Repositories.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
+using Volo.Abp.Domain.Repositories.EntityFrameworkCore;
 using Volo.Abp.EntityFrameworkCore;
 using Yuri.ArmsMall.EntityFrameworkCore;
-using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace Yuri.ArmsMall.Countries;
 
@@ -17,14 +17,19 @@ public class CountryRepository : EfCoreRepository<ArmsMallDbContext, Country, Gu
     /// <inheritdoc/>
     public async Task<List<Country>> GetListAsync()
     {
-        await Task.CompletedTask;
-        return [];
+        ArmsMallDbContext db = await GetDbContextAsync();
+        IQueryable<Country> dbSet = db.Countries;
+        List<Country> countries = await dbSet.ToListAsync();
+        return countries;
     }
 
     /// <inheritdoc/>
     public async Task<(int, List<Country>)> GetPageListAsync()
     {
-        await Task.CompletedTask;
-        return (1, [new Country(GuidGenerator.Create(), "CN", "CHN", "156", "中国")]);
+        ArmsMallDbContext db = await GetDbContextAsync();
+        IQueryable<Country> dbSet = db.Countries;
+        int count = await dbSet.CountAsync();
+        List<Country> countries = await dbSet.Skip(0).Take(20).ToListAsync();
+        return (count, countries);
     }
 }

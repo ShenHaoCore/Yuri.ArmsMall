@@ -15,6 +15,12 @@ public interface ICountryAppService : IApplicationService
     Task<CountryDto> GetAsync(Guid id);
 
     /// <summary>
+    /// 获取列表
+    /// </summary>
+    /// <returns></returns>
+    Task<List<CountryDto>> GetListAsync();
+
+    /// <summary>
     /// 获取分页
     /// </summary>
     /// <returns></returns>
