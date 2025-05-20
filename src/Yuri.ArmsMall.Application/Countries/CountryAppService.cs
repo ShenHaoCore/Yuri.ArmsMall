@@ -37,7 +37,7 @@ public class CountryAppService : ArmsMallAppService, ICountryAppService
         Country country = await _countryRepository.GetAsync(id);
         if (country.Alpha2 != input.Alpha2) { await _countryManager.ChangeAlpha2Async(country, input.Alpha2); }
         if (country.Alpha3 != input.Alpha3) { await _countryManager.ChangeAlpha3Async(country, input.Alpha3); }
-        country.Numeric = input.Numeric;
+        if (country.Numeric != input.Numeric) { await _countryManager.ChangeNumericAsync(country, input.Numeric); }
         country.NameCn = input.NameCn;
         country.NameEn = input.NameEn;
         await _countryRepository.UpdateAsync(country);

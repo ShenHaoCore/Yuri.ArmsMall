@@ -29,7 +29,7 @@ public class CountryManager : DomainService
     /// <param name="nameCn"></param>
     /// <param name="nameEn"></param>
     /// <returns></returns>
-    /// <exception cref="CountryAlreadyExistsAlpha3Exception"></exception>
+    /// <exception cref="ExistsAlpha3Exception"></exception>
     public async Task<Country> CreateAsync([NotNull] string alpha2, [NotNull] string alpha3, [NotNull] string numeric, [NotNull] string nameCn, [NotNull] string nameEn)
     {
         Check.NotNullOrWhiteSpace(alpha2, nameof(alpha2));
@@ -38,9 +38,11 @@ public class CountryManager : DomainService
         Check.NotNullOrWhiteSpace(nameCn, nameof(nameCn));
         Check.NotNullOrWhiteSpace(nameEn, nameof(nameEn));
         var alpha2Country = await _countryRepository.FindAsync(it => it.Alpha2 == alpha2);
-        if (alpha2Country != null) { throw new CountryAlreadyExistsAlpha2Exception(alpha3); }
+        if (alpha2Country != null) { throw new ExistsAlpha2Exception(alpha3); }
         var alpha3Country = await _countryRepository.FindAsync(it => it.Alpha3 == alpha3);
-        if (alpha3Country != null) { throw new CountryAlreadyExistsAlpha3Exception(alpha3); }
+        if (alpha3Country != null) { throw new ExistsAlpha3Exception(alpha3); }
+        var numericCountry = await _countryRepository.FindAsync(it => it.Numeric == numeric);
+        if (numericCountry != null) { throw new ExistsNumericException(numeric); }
         return new Country(GuidGenerator.Create(), alpha2, alpha3, numeric, nameCn, nameEn);
     }
 
@@ -50,13 +52,13 @@ public class CountryManager : DomainService
     /// <param name="country">国家</param>
     /// <param name="newAlpha2">新ISO2编码</param>
     /// <returns></returns>
-    /// <exception cref="CountryAlreadyExistsAlpha2Exception"></exception>
+    /// <exception cref="ExistsAlpha2Exception"></exception>
     public async Task ChangeAlpha2Async([NotNull] Country country, [NotNull] string newAlpha2)
     {
         Check.NotNull(country, nameof(country));
         Check.NotNullOrWhiteSpace(newAlpha2, nameof(newAlpha2));
         var existingCountry = await _countryRepository.FindAsync(it => it.Alpha2 == newAlpha2);
-        if (existingCountry != null && existingCountry.Id != country.Id) { throw new CountryAlreadyExistsAlpha2Exception(newAlpha2); }
+        if (existingCountry != null && existingCountry.Id != country.Id) { throw new ExistsAlpha2Exception(newAlpha2); }
         country.ChangeAlpha2(newAlpha2);
     }
 
@@ -64,15 +66,31 @@ public class CountryManager : DomainService
     /// 修改ISO3编码
     /// </summary>
     /// <param name="country">国家</param>
-    /// <param name="newAlpha2">新ISO2编码</param>
+    /// <param name="newAlpha2">新ISO3编码</param>
     /// <returns></returns>
-    /// <exception cref="CountryAlreadyExistsAlpha3Exception"></exception>
+    /// <exception cref="ExistsAlpha3Exception"></exception>
     public async Task ChangeAlpha3Async([NotNull] Country country, [NotNull] string newAlpha3)
     {
         Check.NotNull(country, nameof(country));
         Check.NotNullOrWhiteSpace(newAlpha3, nameof(newAlpha3));
         var existingCountry = await _countryRepository.FindAsync(it => it.Alpha3 == newAlpha3);
-        if (existingCountry != null && existingCountry.Id != country.Id) { throw new CountryAlreadyExistsAlpha3Exception(newAlpha3); }
+        if (existingCountry != null && existingCountry.Id != country.Id) { throw new ExistsAlpha3Exception(newAlpha3); }
         country.ChangeAlpha3(newAlpha3);
+    }
+
+    /// <summary>
+    /// 修改ISO3编码
+    /// </summary>
+    /// <param name="country">国家</param>
+    /// <param name="newAlpha2">新数字编码</param>
+    /// <returns></returns>
+    /// <exception cref="ExistsNumericException"></exception>
+    public async Task ChangeNumericAsync([NotNull] Country country, [NotNull] string newNumeric)
+    {
+        Check.NotNull(country, nameof(country));
+        Check.NotNullOrWhiteSpace(newNumeric, nameof(newNumeric));
+        var existingCountry = await _countryRepository.FindAsync(it => it.Numeric == newNumeric);
+        if (existingCountry != null && existingCountry.Id != country.Id) { throw new ExistsNumericException(newNumeric); }
+        country.ChangeNumeric(newNumeric);
     }
 }

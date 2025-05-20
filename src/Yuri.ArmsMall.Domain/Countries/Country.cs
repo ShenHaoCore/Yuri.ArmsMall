@@ -22,7 +22,7 @@ public class Country : FullAuditedAggregateRoot<Guid>
     /// <summary>
     /// 数字编码
     /// </summary>
-    public string Numeric { get; set; } = string.Empty;
+    public string Numeric { get; private set; } = string.Empty;
 
     /// <summary>
     /// 中文名
@@ -79,6 +79,15 @@ public class Country : FullAuditedAggregateRoot<Guid>
     }
 
     /// <summary>
+    /// 设置数字编码
+    /// </summary>
+    /// <param name="numeric"></param>
+    private void SetNumeric([NotNull] string numeric)
+    {
+        Numeric = Check.NotNullOrWhiteSpace(numeric, nameof(numeric), maxLength: CountryConsts.MaxNumericLength);
+    }
+
+    /// <summary>
     /// 修改ISO2编码
     /// </summary>
     /// <param name="alpha2"></param>
@@ -97,6 +106,17 @@ public class Country : FullAuditedAggregateRoot<Guid>
     internal Country ChangeAlpha3([NotNull] string alpha3)
     {
         SetAlpha3(alpha3);
+        return this;
+    }
+
+    /// <summary>
+    /// 修改数字编码
+    /// </summary>
+    /// <param name="alpha3"></param>
+    /// <returns></returns>
+    internal Country ChangeNumeric([NotNull] string alpha3)
+    {
+        SetNumeric(alpha3);
         return this;
     }
 }

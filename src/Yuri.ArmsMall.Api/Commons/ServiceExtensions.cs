@@ -1,4 +1,5 @@
 ﻿using Asp.Versioning;
+using Microsoft.OpenApi.Models;
 
 namespace Yuri.ArmsMall.Commons;
 
@@ -29,6 +30,25 @@ public static class ServiceExtensions
             options.GroupNameFormat = "'v'VVV";
             options.SubstituteApiVersionInUrl = true;
         });
+        services.AddOpenApi("v1", option =>
+        {
+            option.AddDocumentTransformer((document, context, cancellationToken) =>
+            {
+                document.Info = new() { Title = $"尤里武器商城 - V1", Version = "v1", Description = $"尤里武器商城相关接口" };
+                document.Info.Contact = new OpenApiContact { Name = "ShenHao", Email = "shenhao@by56.com" };
+                return Task.CompletedTask;
+            });
+        });
+        services.AddOpenApi("v2", option =>
+        {
+            option.AddDocumentTransformer((document, context, cancellationToken) =>
+            {
+                document.Info = new() { Title = $"尤里武器商城 - V2", Version = "v2", Description = $"尤里武器商城相关接口" };
+                document.Info.Contact = new OpenApiContact { Name = "ShenHao", Email = "shenhao@by56.com" };
+                return Task.CompletedTask;
+            });
+        });
+
         return services;
     }
 }

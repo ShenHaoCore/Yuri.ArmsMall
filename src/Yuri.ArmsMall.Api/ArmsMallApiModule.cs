@@ -2,6 +2,7 @@
 using Volo.Abp.AspNetCore.Mvc;
 using Volo.Abp.Autofac;
 using Volo.Abp.Modularity;
+using Yuri.ArmsMall.Commons;
 
 namespace Yuri.ArmsMall;
 
@@ -30,6 +31,7 @@ public class ArmsMallApiModule : AbpModule
     public override void ConfigureServices(ServiceConfigurationContext context)
     {
         Configure<AbpAspNetCoreMvcOptions>(options => { options.ConventionalControllers.Create(typeof(ArmsMallApplicationModule).Assembly); });
+        context.Services.AddControllers(options => { options.Filters.Add<GlobalExceptionFilter>(); });
     }
 
     /// <summary>
