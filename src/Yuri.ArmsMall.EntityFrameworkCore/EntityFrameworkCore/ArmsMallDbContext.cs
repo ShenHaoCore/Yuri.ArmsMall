@@ -3,6 +3,7 @@ using System.Reflection;
 using Volo.Abp.Data;
 using Volo.Abp.EntityFrameworkCore;
 using Yuri.ArmsMall.Countries;
+using Yuri.ArmsMall.IdentityCards;
 
 namespace Yuri.ArmsMall.EntityFrameworkCore;
 
@@ -13,10 +14,8 @@ namespace Yuri.ArmsMall.EntityFrameworkCore;
 public class ArmsMallDbContext : AbpDbContext<ArmsMallDbContext>
 {
     #region 实体
-    /// <summary>
-    /// 
-    /// </summary>
     public DbSet<Country> Countries { get; set; }
+    public DbSet<IdentityCard> IdentityCards { get; set; }
     #endregion
 
     /// <summary>

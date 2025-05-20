@@ -1,6 +1,7 @@
 ﻿using JetBrains.Annotations;
 using Volo.Abp;
 using Volo.Abp.Domain.Services;
+using Yuri.ArmsMall.Countries;
 
 namespace Yuri.ArmsMall.IdentityCards;
 
@@ -41,5 +42,21 @@ public class IdentityCardManager : DomainService
         var existsCountry = await _identityCardRepository.FindAsync(it => it.Number == number);
         if (existsCountry != null) { throw new ExistsNumberException(number); }
         return new IdentityCard(GuidGenerator.Create(), name, sex, nation, birthday, address, number, startDate, endDate);
+    }
+
+    /// <summary>
+    /// 修改ISO3编码
+    /// </summary>
+    /// <param name="identityCard">国家</param>
+    /// <param name="newAlpha2">新ISO3编码</param>
+    /// <returns></returns>
+    /// <exception cref="ExistsAlpha3Exception"></exception>
+    public async Task ChangeNumberAsync([NotNull] IdentityCard identityCard, [NotNull] string newNumber)
+    {
+        Check.NotNull(identityCard, nameof(identityCard));
+        Check.NotNullOrWhiteSpace(newNumber, nameof(newNumber));
+        var existingIdentityCard = await _identityCardRepository.FindAsync(it => it.Number == newNumber);
+        if (existingIdentityCard != null && existingIdentityCard.Id != identityCard.Id) { throw new ExistsAlpha3Exception(newNumber); }
+        identityCard.ChangeNumber(newNumber);
     }
 }

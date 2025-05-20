@@ -21,5 +21,6 @@ public class CountryEntityTypeConfiguration : IEntityTypeConfiguration<Country>
         builder.Property(country => country.Alpha3).IsRequired().HasMaxLength(CountryConsts.Alpha3Length);
         builder.Property(country => country.Numeric).IsRequired().HasMaxLength(CountryConsts.MaxNumericLength);
         builder.Property(country => country.NameCn).IsRequired().HasMaxLength(CountryConsts.MaxNameCnLength);
+        builder.Property(country => country.NameEn).IsRequired().HasMaxLength(CountryConsts.MaxNameEnLength);
     }
 }

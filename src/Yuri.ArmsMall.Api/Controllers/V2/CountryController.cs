@@ -8,7 +8,7 @@ using Yuri.ArmsMall.Countries;
 namespace Yuri.ArmsMall.Controllers.V2;
 
 /// <summary>
-/// 
+/// 国家
 /// </summary>
 [ApiVersion(2.0)]
 public class CountryController : BaseApiController
@@ -16,7 +16,7 @@ public class CountryController : BaseApiController
     private readonly ICountryAppService _countryAppService;
 
     /// <summary>
-    /// 
+    /// 国家
     /// </summary>
     /// <param name="countryAppService"></param>
     public CountryController(ICountryAppService countryAppService)

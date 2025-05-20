@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using Yuri.ArmsMall.Countries;
+using Yuri.ArmsMall.IdentityCards;
 
 namespace Yuri.ArmsMall;
 
@@ -18,5 +19,6 @@ public class ArmsMallApplicationAutoMapperProfile : Profile
          * into multiple profile classes for a better organization. */
 
         CreateMap<Country, CountryDto>();
+        CreateMap<IdentityCard, IdentityCardDto>();
     }
 }
