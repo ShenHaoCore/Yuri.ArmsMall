@@ -8,27 +8,27 @@ namespace Yuri.ArmsMall.Countries;
 public class CountryDto : EntityDto<Guid>
 {
     /// <summary>
-    /// IOS3
+    /// ISO2编码
     /// </summary>
-    public string IOS2 { get; set; } = string.Empty;
+    public string Alpha2 { get; private set; } = string.Empty;
 
     /// <summary>
-    /// IOS3
+    /// ISO3编码
     /// </summary>
-    public string IOS3 { get; set; } = string.Empty;
+    public string Alpha3 { get; private set; } = string.Empty;
 
     /// <summary>
-    /// 编号
+    /// 数字编码
     /// </summary>
-    public string Number { get; set; } = string.Empty;
+    public string Numeric { get; set; } = string.Empty;
 
     /// <summary>
-    /// 
+    /// 中文名
     /// </summary>
-    public string Name { get; set; } = string.Empty;
+    public string NameCn { get; set; } = string.Empty;
 
     /// <summary>
-    /// 
+    /// 英文名
     /// </summary>
-    public string FullName { get; set; } = string.Empty;
+    public string NameEn { get; set; } = string.Empty;
 }

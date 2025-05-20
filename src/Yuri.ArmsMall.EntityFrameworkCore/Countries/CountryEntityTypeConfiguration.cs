@@ -17,9 +17,9 @@ public class CountryEntityTypeConfiguration : IEntityTypeConfiguration<Country>
     {
         builder.ToTable($"{ArmsMallConsts.DbTablePrefix}{nameof(Country)}", ArmsMallConsts.DbSchema);
         builder.ConfigureByConvention();
-        builder.Property(country => country.IOS2).IsRequired().HasMaxLength(CountryConsts.Ios2Length);
-        builder.Property(country => country.IOS3).IsRequired().HasMaxLength(CountryConsts.Ios3Length);
-        builder.Property(country => country.Number).IsRequired().HasMaxLength(CountryConsts.MaxNumberLength);
-        builder.Property(country => country.Name).IsRequired().HasMaxLength(CountryConsts.MaxNameLength);
+        builder.Property(country => country.Alpha2).IsRequired().HasMaxLength(CountryConsts.Alpha2Length);
+        builder.Property(country => country.Alpha3).IsRequired().HasMaxLength(CountryConsts.Alpha3Length);
+        builder.Property(country => country.Numeric).IsRequired().HasMaxLength(CountryConsts.MaxNumericLength);
+        builder.Property(country => country.NameCn).IsRequired().HasMaxLength(CountryConsts.MaxNameCnLength);
     }
 }

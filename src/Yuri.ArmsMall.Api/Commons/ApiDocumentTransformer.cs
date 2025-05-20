@@ -2,7 +2,7 @@
 using Microsoft.AspNetCore.OpenApi;
 using Microsoft.OpenApi.Models;
 
-namespace Yuri.ArmsMall.Common;
+namespace Yuri.ArmsMall.Commons;
 
 /// <summary>
 /// 

@@ -8,9 +8,30 @@ namespace Yuri.ArmsMall.Countries;
 public interface ICountryAppService : IApplicationService
 {
     /// <summary>
-    /// 获取实体
+    /// 创建
+    /// </summary>
+    /// <param name="input">输入参数</param>
+    /// <returns></returns>
+    Task<CountryDto> CreateAsync(CreateCountryDto input);
+
+    /// <summary>
+    /// 删除
     /// </summary>
     /// <param name="id"></param>
+    /// <returns></returns>
+    Task DeleteAsync(Guid id);
+
+    /// <summary>
+    /// 修改
+    /// </summary>
+    /// <param name="id">ID</param>
+    /// <param name="input">输入参数</param>
+    Task UpdateAsync(Guid id, UpdateCountryDto input);
+
+    /// <summary>
+    /// 获取实体
+    /// </summary>
+    /// <param name="id">ID</param>
     /// <returns></returns>
     Task<CountryDto> GetAsync(Guid id);
 
