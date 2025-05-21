@@ -1,4 +1,6 @@
-﻿namespace Yuri.ArmsMall.Countries;
+﻿using Volo.Abp.Application.Dtos;
+
+namespace Yuri.ArmsMall.Countries;
 
 /// <inheritdoc cref="ICountryAppService"/>
 public class CountryAppService : ArmsMallAppService, ICountryAppService
@@ -58,9 +60,9 @@ public class CountryAppService : ArmsMallAppService, ICountryAppService
     }
 
     /// <inheritdoc/>
-    public async Task<(int, List<CountryDto>)> GetPageListAsync()
+    public async Task<PagedResultDto<CountryDto>> GetPagedAsync()
     {
-        (int count, List<Country> list) = await _countryRepository.GetPageListAsync();
-        return (count, ObjectMapper.Map<List<Country>, List<CountryDto>>(list));
+        (int count, List<Country> list) = await _countryRepository.GetPagedAsync();
+        return new PagedResultDto<CountryDto>(count, ObjectMapper.Map<List<Country>, List<CountryDto>>(list));
     }
 }

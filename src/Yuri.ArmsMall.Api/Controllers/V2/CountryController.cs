@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
+using Volo.Abp.Application.Dtos;
 using Yuri.ArmsMall.Commons;
 using Yuri.ArmsMall.Countries;
 
@@ -27,6 +28,7 @@ public class CountryController : BaseApiController
     /// <summary>
     /// 获取国家对象
     /// </summary>
+    /// <param name="id">ID</param>
     /// <returns></returns>
     [HttpGet("{id}")]
     [EndpointSummary("获取对象API")]
@@ -50,16 +52,16 @@ public class CountryController : BaseApiController
     }
 
     /// <summary>
-    /// 获取国家分页列表
+    /// 获取国家分页
     /// </summary>
     /// <returns></returns>
     [HttpPost]
     [EndpointSummary("获取分页API")]
-    [EndpointDescription("获取国家分页列表")]
-    public async Task<IActionResult> GetPageListAsync()
+    [EndpointDescription("获取国家分页")]
+    public async Task<IActionResult> GetPagedAsync()
     {
-        (int count, List<CountryDto> list) = await _countryAppService.GetPageListAsync();
-        return Success(new { count, list });
+        PagedResultDto<CountryDto> paged = await _countryAppService.GetPagedAsync();
+        return Success(paged);
     }
 }
 

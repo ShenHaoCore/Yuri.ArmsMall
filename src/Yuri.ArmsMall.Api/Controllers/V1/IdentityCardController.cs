@@ -1,9 +1,8 @@
 ﻿using Asp.Versioning;
 using Microsoft.AspNetCore.Mvc;
-using System.ComponentModel.DataAnnotations;
 using System.ComponentModel;
+using System.ComponentModel.DataAnnotations;
 using Yuri.ArmsMall.Commons;
-using Yuri.ArmsMall.Countries;
 using Yuri.ArmsMall.IdentityCards;
 
 namespace Yuri.ArmsMall.Controllers.V1;
@@ -28,6 +27,7 @@ public class IdentityCardController : BaseApiController
     /// <summary>
     /// 创建身份证
     /// </summary>
+    /// <param name="request">请求</param>
     /// <returns></returns>
     [HttpPost]
     [EndpointSummary("创建API")]
@@ -38,8 +38,24 @@ public class IdentityCardController : BaseApiController
     }
 
     /// <summary>
+    /// 删除身份证
+    /// </summary>
+    /// <param name="id">ID</param>
+    /// <returns></returns>
+    [HttpDelete]
+    [EndpointSummary("删除API")]
+    [EndpointDescription("删除身份证")]
+    public async Task<IActionResult> DeleteAsync([Required][DefaultValue(typeof(Guid), "00000000-0000-0000-0000-000000000000")] Guid id)
+    {
+        await _identityCardAppService.DeleteAsync(id);
+        return Success("SUCCESS");
+    }
+
+    /// <summary>
     /// 修改身份证
     /// </summary>
+    /// <param name="id">ID</param>
+    /// <param name="request">请求</param>
     /// <returns></returns>
     [HttpPut("{id}")]
     [EndpointSummary("修改API")]
@@ -48,6 +64,19 @@ public class IdentityCardController : BaseApiController
     {
         await _identityCardAppService.UpdateAsync(id, request);
         return Success("SUCCESS");
+    }
+
+    /// <summary>
+    /// 获取身份证对象
+    /// </summary>
+    /// <param name="id">ID</param>
+    /// <returns></returns>
+    [HttpGet("{id}")]
+    [EndpointSummary("获取对象API")]
+    [EndpointDescription("获取身份证对象")]
+    public async Task<IActionResult> GetAsync([Required][DefaultValue(typeof(Guid), "00000000-0000-0000-0000-000000000000")] Guid id)
+    {
+        return Success(await _identityCardAppService.GetAsync(id));
     }
 
     /// <summary>

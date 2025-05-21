@@ -1,4 +1,7 @@
-﻿using Yuri.ArmsMall.Countries;
+﻿using Volo.Abp.Application.Dtos;
+using Volo.Abp.ObjectMapping;
+using Yuri.ArmsMall.Countries;
+using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace Yuri.ArmsMall.IdentityCards;
 
@@ -28,6 +31,12 @@ public class IdentityCardAppService : ArmsMallAppService, IIdentityCardAppServic
     }
 
     /// <inheritdoc/>
+    public async Task DeleteAsync(Guid id)
+    {
+        await _identityCardRepository.DeleteAsync(id);
+    }
+
+    /// <inheritdoc/>
     public async Task UpdateAsync(Guid id, UpdateIdentityCardDto input)
     {
         IdentityCard identityCard = await _identityCardRepository.GetAsync(id);
@@ -43,9 +52,24 @@ public class IdentityCardAppService : ArmsMallAppService, IIdentityCardAppServic
     }
 
     /// <inheritdoc/>
+    public async Task<IdentityCardDto> GetAsync(Guid id)
+    {
+        IdentityCard country = await _identityCardRepository.GetAsync(id);
+        return ObjectMapper.Map<IdentityCard, IdentityCardDto>(country);
+    }
+
+    /// <inheritdoc/>
     public async Task<List<IdentityCardDto>> GetListAsync()
     {
         List<IdentityCard> list = await _identityCardRepository.GetListAsync();
         return ObjectMapper.Map<List<IdentityCard>, List<IdentityCardDto>>(list);
+    }
+
+    /// <inheritdoc/>
+    public async Task<PagedResultDto<IdentityCardDto>> GetPagedAsync(GetIdentityCardPagedDto input)
+    {
+        if (input.Sorting.IsNullOrWhiteSpace()) { input.Sorting = nameof(IdentityCard.CreationTime); }
+        (int count, List<IdentityCard> list) = await _identityCardRepository.GetPagedAsync(input.SkipCount, input.MaxResultCount, input.Sorting, input.Filter);
+        return new PagedResultDto<IdentityCardDto>(count, ObjectMapper.Map<List<IdentityCard>, List<IdentityCardDto>>(list));
     }
 }

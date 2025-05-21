@@ -1,6 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Volo.Abp.Domain.Repositories.EntityFrameworkCore;
 using Volo.Abp.EntityFrameworkCore;
+using Yuri.ArmsMall.Countries;
 using Yuri.ArmsMall.EntityFrameworkCore;
 
 namespace Yuri.ArmsMall.IdentityCards;
@@ -21,7 +22,14 @@ public class IdentityCardRepository : EfCoreRepository<ArmsMallDbContext, Identi
     {
         ArmsMallDbContext db = await GetDbContextAsync();
         IQueryable<IdentityCard> dbSet = db.IdentityCards;
-        List<IdentityCard> identityCards = await dbSet.ToListAsync();
-        return identityCards;
+        return await dbSet.ToListAsync();
+    }
+
+    /// <inheritdoc/>
+    public async Task<(int, List<IdentityCard>)> GetPagedAsync(int skipCount, int maxResultCount, string sorting, string? filter = null)
+    {
+        ArmsMallDbContext db = await GetDbContextAsync();
+        IQueryable<IdentityCard> dbSet = db.IdentityCards;
+        return (await dbSet.CountAsync(), await dbSet.Skip(0).Take(20).ToListAsync());
     }
 }

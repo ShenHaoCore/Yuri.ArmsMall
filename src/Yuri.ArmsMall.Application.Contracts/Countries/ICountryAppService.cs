@@ -1,4 +1,5 @@
-﻿using Volo.Abp.Application.Services;
+﻿using Volo.Abp.Application.Dtos;
+using Volo.Abp.Application.Services;
 
 namespace Yuri.ArmsMall.Countries;
 
@@ -45,5 +46,5 @@ public interface ICountryAppService : IApplicationService
     /// 获取分页
     /// </summary>
     /// <returns></returns>
-    Task<(int, List<CountryDto>)> GetPageListAsync();
+    Task<PagedResultDto<CountryDto>> GetPagedAsync();
 }

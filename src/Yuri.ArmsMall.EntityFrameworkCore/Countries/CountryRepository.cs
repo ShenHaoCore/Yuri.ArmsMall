@@ -24,7 +24,7 @@ public class CountryRepository : EfCoreRepository<ArmsMallDbContext, Country, Gu
     }
 
     /// <inheritdoc/>
-    public async Task<(int, List<Country>)> GetPageListAsync()
+    public async Task<(int, List<Country>)> GetPagedAsync()
     {
         ArmsMallDbContext db = await GetDbContextAsync();
         IQueryable<Country> dbSet = db.Countries;

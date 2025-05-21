@@ -17,5 +17,5 @@ public interface ICountryRepository : IRepository<Country, Guid>
     /// 获取分页
     /// </summary>
     /// <returns></returns>
-    Task<(int, List<Country>)> GetPageListAsync();
+    Task<(int, List<Country>)> GetPagedAsync();
 }

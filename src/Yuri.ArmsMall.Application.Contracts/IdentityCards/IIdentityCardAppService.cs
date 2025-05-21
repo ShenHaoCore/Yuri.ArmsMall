@@ -1,5 +1,5 @@
-﻿using Volo.Abp.Application.Services;
-using Yuri.ArmsMall.Countries;
+﻿using Volo.Abp.Application.Dtos;
+using Volo.Abp.Application.Services;
 
 namespace Yuri.ArmsMall.IdentityCards;
 
@@ -16,6 +16,13 @@ public interface IIdentityCardAppService : IApplicationService
     Task<IdentityCardDto> CreateAsync(CreateIdentityCardDto input);
 
     /// <summary>
+    /// 删除
+    /// </summary>
+    /// <param name="id">ID</param>
+    /// <returns></returns>
+    Task DeleteAsync(Guid id);
+
+    /// <summary>
     /// 修改
     /// </summary>
     /// <param name="id">ID</param>
@@ -23,8 +30,21 @@ public interface IIdentityCardAppService : IApplicationService
     Task UpdateAsync(Guid id, UpdateIdentityCardDto input);
 
     /// <summary>
+    /// 获取实体
+    /// </summary>
+    /// <param name="id">ID</param>
+    /// <returns></returns>
+    Task<IdentityCardDto> GetAsync(Guid id);
+
+    /// <summary>
     /// 获取列表
     /// </summary>
     /// <returns></returns>
     Task<List<IdentityCardDto>> GetListAsync();
+
+    /// <summary>
+    /// 获取分页
+    /// </summary>
+    /// <returns></returns>
+    Task<PagedResultDto<IdentityCardDto>> GetPagedAsync(GetIdentityCardPagedDto input);
 }
