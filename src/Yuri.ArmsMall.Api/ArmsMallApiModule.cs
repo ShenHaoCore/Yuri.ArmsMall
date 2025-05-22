@@ -32,6 +32,7 @@ public class ArmsMallApiModule : AbpModule
     {
         Configure<AbpAspNetCoreMvcOptions>(options => { options.ConventionalControllers.Create(typeof(ArmsMallApplicationModule).Assembly); });
         context.Services.AddControllers(options => { options.Filters.Add<GlobalExceptionFilter>(); });
+        context.Services.AddSignalR();
     }
 
     /// <summary>
@@ -43,6 +44,8 @@ public class ArmsMallApiModule : AbpModule
         var env = context.GetEnvironment();
         var app = context.GetApplicationBuilder();
         if (env.IsDevelopment()) { app.UseDeveloperExceptionPage(); }
+        app.UseRouting();
+        app.UseEndpoints(endpoints => { endpoints.MapHub<ChatHub>("/ChatHub"); });
         app.UseHttpsRedirection();
         app.UseAuthorization();
     }

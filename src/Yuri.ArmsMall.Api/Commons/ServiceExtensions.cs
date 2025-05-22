@@ -13,7 +13,7 @@ public static class ServiceExtensions
     /// </summary>
     /// <param name="services"></param>
     /// <returns></returns>
-    public static IServiceCollection AddAspVersioning(this IServiceCollection services)
+    public static IServiceCollection AddOpenApiVersioning(this IServiceCollection services)
     {
         services.AddApiVersioning(options =>
         {
@@ -30,24 +30,19 @@ public static class ServiceExtensions
             options.GroupNameFormat = "'v'VVV";
             options.SubstituteApiVersionInUrl = true;
         });
-        services.AddOpenApi("v1", option =>
+
+        foreach (var version in ApiVersionConsts.All)
         {
-            option.AddDocumentTransformer((document, context, cancellationToken) =>
+            services.AddOpenApi($"v{version}", option =>
             {
-                document.Info = new() { Title = $"尤里武器商城 - V1", Version = "v1", Description = $"尤里武器商城相关接口" };
-                document.Info.Contact = new OpenApiContact { Name = "ShenHao", Email = "shenhao@by56.com" };
-                return Task.CompletedTask;
+                option.AddDocumentTransformer((document, context, cancellationToken) =>
+                {
+                    document.Info = new() { Title = $"尤里武器商城 - V{version}", Version = $"v{version}", Description = $"尤里武器商城相关接口" };
+                    document.Info.Contact = new OpenApiContact { Name = "ShenHao", Email = "shenhao@by56.com" };
+                    return Task.CompletedTask;
+                });
             });
-        });
-        services.AddOpenApi("v2", option =>
-        {
-            option.AddDocumentTransformer((document, context, cancellationToken) =>
-            {
-                document.Info = new() { Title = $"尤里武器商城 - V2", Version = "v2", Description = $"尤里武器商城相关接口" };
-                document.Info.Contact = new OpenApiContact { Name = "ShenHao", Email = "shenhao@by56.com" };
-                return Task.CompletedTask;
-            });
-        });
+        }
 
         return services;
     }

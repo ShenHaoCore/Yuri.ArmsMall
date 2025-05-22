@@ -10,7 +10,7 @@ namespace Yuri.ArmsMall.Controllers.V1;
 /// <summary>
 /// 身份证
 /// </summary>
-[ApiVersion(1.0)]
+[ApiVersion(ApiVersionConsts.V1)]
 public class IdentityCardController : BaseApiController
 {
     private readonly IIdentityCardAppService _identityCardAppService;

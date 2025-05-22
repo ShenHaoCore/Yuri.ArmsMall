@@ -11,7 +11,7 @@ namespace Yuri.ArmsMall.Controllers.V2;
 /// <summary>
 /// 国家
 /// </summary>
-[ApiVersion(2.0)]
+[ApiVersion(ApiVersionConsts.V2)]
 public class CountryController : BaseApiController
 {
     private readonly ICountryAppService _countryAppService;

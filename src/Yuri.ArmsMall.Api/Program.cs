@@ -5,7 +5,7 @@ using Yuri.ArmsMall.Commons;
 var builder = WebApplication.CreateBuilder(args);
 builder.Host.UseAutofac();
 await builder.AddApplicationAsync<ArmsMallApiModule>();
-builder.Services.AddAspVersioning();
+builder.Services.AddOpenApiVersioning();
 
 var app = builder.Build();
 if (app.Environment.IsDevelopment())
