@@ -1,5 +1,8 @@
 ﻿using Volo.Abp.AutoMapper;
+using Volo.Abp.FluentValidation;
 using Volo.Abp.Modularity;
+using Volo.Abp.Validation;
+using Yuri.ArmsMall.Countries;
 
 namespace Yuri.ArmsMall;
 
@@ -7,6 +10,7 @@ namespace Yuri.ArmsMall;
 /// 
 /// </summary>
 [DependsOn(typeof(AbpAutoMapperModule))]
+[DependsOn(typeof(AbpFluentValidationModule))]
 [DependsOn(typeof(ArmsMallApplicationContractsModule))]
 [DependsOn(typeof(ArmsMallDomainModule))]
 public class ArmsMallApplicationModule : AbpModule
@@ -27,5 +31,6 @@ public class ArmsMallApplicationModule : AbpModule
     public override void ConfigureServices(ServiceConfigurationContext context)
     {
         Configure<AbpAutoMapperOptions>(options => { options.AddMaps<ArmsMallApplicationModule>(); });
+        Configure<AbpValidationOptions>(options => { });
     }
 }

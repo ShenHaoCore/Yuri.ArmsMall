@@ -3,6 +3,7 @@ using Volo.Abp.AspNetCore.Mvc;
 using Volo.Abp.Autofac;
 using Volo.Abp.Modularity;
 using Yuri.ArmsMall.Commons;
+using Yuri.ArmsMall.Hubs;
 
 namespace Yuri.ArmsMall;
 

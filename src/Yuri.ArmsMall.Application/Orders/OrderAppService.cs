@@ -1,4 +1,5 @@
-﻿namespace Yuri.ArmsMall.Orders;
+﻿
+namespace Yuri.ArmsMall.Orders;
 
 /// <summary>
 /// 
@@ -12,11 +13,21 @@ public class OrderAppService : IOrderAppService
     {
     }
 
-    /// <summary>
-    /// 
-    /// </summary>
-    /// <returns></returns>
-    public async Task<(int, List<OrderDto>)> GetPageListAsync()
+    /// <inheritdoc/>
+    public async Task<OrderDto> CreateAsync()
+    {
+        await Task.CompletedTask;
+        return new OrderDto();
+    }
+
+    /// <inheritdoc/>
+    public async Task DeleteAsync(Guid id)
+    {
+        await Task.CompletedTask;
+    }
+
+    /// <inheritdoc/>
+    public async Task<(int, List<OrderDto>)> GetPagedAsync()
     {
         await Task.CompletedTask;
         return (0, []);
